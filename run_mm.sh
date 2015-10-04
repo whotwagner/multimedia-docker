@@ -36,11 +36,17 @@ fi
 
 # Create all the Configfiles if necessary
 test -d $HOMEVOLUMES || mkdir $HOMEVOLUMES
-test -d $HOMEVOLUMES/spotify || mkdir $HOMEVOLUMES/spotify
-test -d $HOMEVOLUMES/spotify/config || mkdir $HOMEVOLUMES/spotify/config
-test -d $HOMEVOLUMES/spotify/cache || mkdir $HOMEVOLUMES/spotify/cache
-test -d $HOMEVOLUMES/Skype || mkdir $HOMEVOLUMES/Skype
-test -d $HOMEVOLUMES/google-chrome || mkdir $HOMEVOLUMES/google-chrome
+test -d $HOMEVOLUMES/home || mkdir $HOMEVOLUMES/home
+# test -d $HOMEVOLUMES/spotify || mkdir $HOMEVOLUMES/spotify
+# test -d $HOMEVOLUMES/spotify/config || mkdir $HOMEVOLUMES/spotify/config
+# test -d $HOMEVOLUMES/spotify/cache || mkdir $HOMEVOLUMES/spotify/cache
+# test -d $HOMEVOLUMES/Skype || mkdir $HOMEVOLUMES/Skype
+# test -d $HOMEVOLUMES/google-chrome || mkdir $HOMEVOLUMES/google-chrome
+
+#    -v $HOMEVOLUMES/spotify/config:/home/${DOCKERUSER}/.config/spotify \
+#    -v $HOMEVOLUMES/spotify/cache:/home/${DOCKERUSER}/.cache/spotify \
+#    -v $HOMEVOLUMES/Skype:/home/${DOCKERUSER}/.Skype \
+#    -v $HOMEVOLUMES/google-chrome:/home/${DOCKERUSER}/.config/google-chrome \
 
 docker ps | grep "$IMAGE"
 if [ $? -eq 1 ] || [ $ALWAYSUSERUN -eq 1 ]
@@ -52,10 +58,7 @@ docker run -ti --rm \
     --name mm${CMD} \
     -e DISPLAY=unix$DISPLAY \
     -e PULSE_SERVER=unix:/run/pulse \
-    -v $HOMEVOLUMES/spotify/config:/home/${DOCKERUSER}/.config/spotify \
-    -v $HOMEVOLUMES/spotify/cache:/home/${DOCKERUSER}/.cache/spotify \
-    -v $HOMEVOLUMES/Skype:/home/${DOCKERUSER}/.Skype \
-    -v $HOMEVOLUMES/google-chrome:/home/${DOCKERUSER}/.config/google-chrome \
+    -v $HOMEVOLUMES/home:/home/${DOCKERUSER}/ \
     -v /etc/localtime:/etc/localtime:ro \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /run/user/`id -u`/pulse/native:/run/pulse \

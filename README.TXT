@@ -45,7 +45,7 @@ Using the image:
 
 Making changes permanent:
 -------------------------
-The configuration-files for spotify and skype are persistent. It is realized by mounted volumes in $HOME/.mymultimediaapps.
+The configuration-files for spotify and skype are persistent. This is realized with mounted volumes in $HOME/.mymultimediaapps.
 I manually added all the volumes in run_mm.sh, so it is easy to remove one if you don't want to cache the configuration 
 of one specific app. 
 
