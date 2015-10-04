@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 
 RUN useradd -m -U pt
-RUN echo "pt:SuchANiceUser" | chpasswd
+RUN echo "pt:BestUser4Ever" | chpasswd
 
 # Install wget and pulseaudio(mplayer is nice too)
 RUN apt-get update && apt-get install -y mplayer pulseaudio wget
