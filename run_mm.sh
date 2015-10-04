@@ -36,7 +36,7 @@ fi
 
 # Create all the Configfiles if necessary
 test -d $HOMEVOLUMES || mkdir $HOMEVOLUMES
-test -d $HOMEVOLUMES/spotify || mkdir $HOMEVOLUMES/.spotify
+test -d $HOMEVOLUMES/spotify || mkdir $HOMEVOLUMES/spotify
 test -d $HOMEVOLUMES/spotify/config || mkdir $HOMEVOLUMES/spotify/config
 test -d $HOMEVOLUMES/spotify/cache || mkdir $HOMEVOLUMES/spotify/cache
 test -d $HOMEVOLUMES/Skype || mkdir $HOMEVOLUMES/Skype
