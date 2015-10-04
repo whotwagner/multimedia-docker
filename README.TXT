@@ -1,6 +1,6 @@
-This project contains a dockerfile for building a multimedia-image. This images is
+This project contains a dockerfile for building a multimedia-image. This image is
 based on ubuntu trusty and has google-chrome, skype, firefox and spotify pre-installed.
-You could use this docker-image to keep your system clean from closed-source software by
+One could use this docker-image to keep his system clean from closed-source software by
 seperating it using a container. Of course it is possible to run all those applications at once
 
 
@@ -9,9 +9,6 @@ Requirements:
 
 - pulseaudio running on the host
 - X11 running on the host
-
-
-
 
 Building the image:
 --------------------
@@ -46,7 +43,5 @@ Using the image:
 Making changes permanent:
 -------------------------
 The configuration-files for spotify and skype are persistent. This is realized with mounted volumes in $HOME/.mymultimediaapps.
-I manually added all the volumes in run_mm.sh, so it is easy to remove one if you don't want to cache the configuration 
-of one specific app. 
 
 PS: For some reason, spotify doesn't use the cached credentials. Therefore it always asks for login-data.
