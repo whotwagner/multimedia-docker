@@ -14,6 +14,10 @@ RUN echo "pt:BestUser4Ever" | chpasswd
 # Install wget and pulseaudio(mplayer is nice too)
 RUN apt-get update && apt-get install -y mplayer pulseaudio wget openssh-server
 
+# Pepper-Flash-Stuff
+RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty multiverse | tee /etc/apt/source.list
+RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse | tee /etc/apt/source.list
+
 # Chrome-Stuff
 RUN wget  -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 RUN echo deb http://dl.google.com/linux/chrome/deb/ stable main | tee  /etc/apt/sources.list.d/google-chrome.list
@@ -42,6 +46,10 @@ RUN apt-get install -y libgcrypt11 firefox
 
 # Install Chrome
 RUN apt-get install -y google-chrome-stable
+
+# Install Pepperflash
+RUN apt-get install -y pepperflashplugin-nonfree
+RUN update-pepperflashplugin-nonfree --install
 
 USER pt
 
