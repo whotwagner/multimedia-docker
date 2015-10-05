@@ -54,7 +54,6 @@ then
 # if there is not container using our build image-file
 # run a new container
 docker run -ti --rm \
-    --privileged \
     --name mm${CMD} \
     -e DISPLAY=unix$DISPLAY \
     -e PULSE_SERVER=unix:/run/pulse \
@@ -63,6 +62,7 @@ docker run -ti --rm \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
     -v /run/user/`id -u`/pulse/native:/run/pulse \
     -v /dev/video0:/dev/video0:rw \
+    -p 10011:22 \
     --user ${DOCKERUSER} \
     --hostname mm${CMD} \
     $IMAGE /bin/bash -c "$CMD"

@@ -12,7 +12,7 @@ RUN useradd -m -U pt
 RUN echo "pt:BestUser4Ever" | chpasswd
 
 # Install wget and pulseaudio(mplayer is nice too)
-RUN apt-get update && apt-get install -y mplayer pulseaudio wget
+RUN apt-get update && apt-get install -y mplayer pulseaudio wget openssh-server
 
 # Chrome-Stuff
 RUN wget  -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
