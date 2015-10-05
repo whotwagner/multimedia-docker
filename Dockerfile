@@ -15,8 +15,8 @@ RUN echo "pt:BestUser4Ever" | chpasswd
 RUN apt-get update && apt-get install -y mplayer pulseaudio wget openssh-server
 
 # Pepper-Flash-Stuff
-RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty multiverse | tee /etc/apt/source.list
-RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse | tee /etc/apt/source.list
+RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty multiverse | tee /etc/apt/sources.list.d/multiverse.list
+RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse | tee /etc/apt/sources.list.d/multiverse-updates.list
 
 # Chrome-Stuff
 RUN wget  -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -44,12 +44,14 @@ RUN apt-get install -y libpangoxft-1.0-0 spotify-client
 # UNCOMMENT THIS FOR A UBUNTU-BASE-IMAGE:
 RUN apt-get install -y libgcrypt11 firefox
 
+RUN echo "pt    ALL = NOPASSWD: ALL" | tee /etc/sudoers.d/pt
+
 # Install Chrome
 RUN apt-get install -y google-chrome-stable
 
 # Install Pepperflash
-RUN apt-get install -y pepperflashplugin-nonfree
-RUN update-pepperflashplugin-nonfree --install
+# RUN apt-get install -y pepperflashplugin-nonfree
+# RUN update-pepperflashplugin-nonfree --install
 
 USER pt
 
