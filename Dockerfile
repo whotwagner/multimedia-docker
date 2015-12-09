@@ -47,7 +47,7 @@ RUN apt-get install -y libgcrypt11 firefox
 RUN echo "pt    ALL = NOPASSWD: ALL" | tee /etc/sudoers.d/pt
 
 # Install Chrome
-RUN apt-get install -y google-chrome-stable
+RUN apt-get install -y google-chrome-beta
 
 # Install Pepperflash
 # RUN apt-get install -y pepperflashplugin-nonfree
