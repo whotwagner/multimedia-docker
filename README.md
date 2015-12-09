@@ -16,16 +16,16 @@ seperating it using a container. Of course it is possible to run all those appli
 ./run_mm.sh build
 
 ## Using the image:
-# run spotify
+### run spotify
 ./run_mm.sh spotify
 
-# run skype
+### run skype
 ./run_mm.sh skype 
 
-# run a shell
+### run a shell
 ./run_mm.sh bash
 
-# run firefox
+### run firefox
 ./run_mm.sh firefox
 
 It is possible to run the applications using the same container
