@@ -1,4 +1,4 @@
-# Docker-Container for Closed-Source-Projects(skype,spotify)
+# Docker-Container for skype and spotify
 
 This project contains a dockerfile for building a multimedia-image. This image is
 based on ubuntu trusty and has google-chrome, skype, firefox and spotify pre-installed.
