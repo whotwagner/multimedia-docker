@@ -23,7 +23,7 @@ HOMEVOLUMES="$HOME/.mymultimediaapps"
 
 if [ $# -eq 0 ]
 then
-echo "usage: $0 <build|skype|spotify|bash>"
+echo "usage: $0 <build|skype|spotify|vivaldi|bash>"
 exit 0
 fi
 

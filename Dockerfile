@@ -53,6 +53,9 @@ RUN apt-get install -y google-chrome-beta
 # RUN apt-get install -y pepperflashplugin-nonfree
 # RUN update-pepperflashplugin-nonfree --install
 
+RUN wget -q -nd -r -l 1 -A deb https://vivaldi.com/download/
+RUN test `arch` = "x86_64" && dpkg -i vivaldi*amd64*.deb || ( test `arch` = "i686" && dpkg -i vivaldi*i386*.deb )
+
 USER pt
 
 WORKDIR /home/pt
