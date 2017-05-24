@@ -28,6 +28,11 @@ seperating it using a container. Of course it is possible to run all those appli
 ### run firefox
 ./run_mm.sh firefox
 
+# Post-Install
+Someone reported me that he had to give access for X to make it work:
+```
+sudo xhost local:docker
+```
 
 It is possible to run the applications using the same container
 
