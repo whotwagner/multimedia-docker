@@ -11,16 +11,18 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN useradd -m -U pt
 RUN echo "pt:BestUser4Ever" | chpasswd
 
+RUN apt-get update && apt-get upgrade -y
+
 # Install wget and pulseaudio(mplayer is nice too)
-RUN apt-get update && apt-get install -y mplayer pulseaudio wget openssh-server
+RUN apt-get install -y mplayer pulseaudio wget openssh-server sudo
 
 # Pepper-Flash-Stuff
-RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty multiverse | tee /etc/apt/sources.list.d/multiverse.list
-RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse | tee /etc/apt/sources.list.d/multiverse-updates.list
+# RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty multiverse | tee /etc/apt/sources.list.d/multiverse.list
+# RUN echo deb http://archive.ubuntu.com/ubuntu/ trusty-updates multiverse | tee /etc/apt/sources.list.d/multiverse-updates.list
 
 # Chrome-Stuff
-RUN wget  -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-RUN echo deb http://dl.google.com/linux/chrome/deb/ stable main | tee  /etc/apt/sources.list.d/google-chrome.list
+# RUN wget  -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# RUN echo deb http://dl.google.com/linux/chrome/deb/ stable main | tee  /etc/apt/sources.list.d/google-chrome.list
 
 
 # Spotify-Stuff
@@ -42,19 +44,20 @@ RUN apt-get install -y libpangoxft-1.0-0 spotify-client
 #RUN apt-get install -y iceweasel
 
 # UNCOMMENT THIS FOR A UBUNTU-BASE-IMAGE:
-RUN apt-get install -y libgcrypt11 firefox
+# RUN apt-get install -y libgcrypt11 firefox
+RUN apt-get install -y firefox
 
 RUN echo "pt    ALL = NOPASSWD: ALL" | tee /etc/sudoers.d/pt
 
 # Install Chrome
-RUN apt-get install -y google-chrome-beta
+# RUN apt-get install -y google-chrome-beta
 
 # Install Pepperflash
-RUN apt-get install -y pepperflashplugin-nonfree
-RUN update-pepperflashplugin-nonfree --install
+# RUN apt-get install -y pepperflashplugin-nonfree
+# RUN update-pepperflashplugin-nonfree --install
 
-RUN wget -q -nd -r -l 1 -A deb https://vivaldi.com/download/
-RUN test `arch` = "x86_64" && dpkg -i vivaldi*amd64*.deb || ( test `arch` = "i686" && dpkg -i vivaldi*i386*.deb )
+# RUN wget -q -nd -r -l 1 -A deb https://vivaldi.com/download/
+# RUN test `arch` = "x86_64" && dpkg -i vivaldi*amd64*.deb || ( test `arch` = "i686" && dpkg -i vivaldi*i386*.deb )
 
 USER pt
 

@@ -17,13 +17,15 @@ IMAGE="hoti/multimedia"
 # and then you have to rebuild the image
 DOCKERUSER="pt"
 
+NVIDIA="--device /dev/nvidia0:/dev/nvidia0 --device /dev/nvidiactl:/dev/nvidiactl"
+
 # where do we save the persistent
 # configurations of all our apps?
 HOMEVOLUMES="$HOME/.mymultimediaapps"
 
 if [ $# -eq 0 ]
 then
-echo "usage: $0 <build|skype|spotify|vivaldi|bash>"
+echo "usage: $0 <build|skype|spotify|bash>"
 exit 0
 fi
 
@@ -41,12 +43,10 @@ test -d $HOMEVOLUMES/home || mkdir $HOMEVOLUMES/home
 # test -d $HOMEVOLUMES/spotify/config || mkdir $HOMEVOLUMES/spotify/config
 # test -d $HOMEVOLUMES/spotify/cache || mkdir $HOMEVOLUMES/spotify/cache
 # test -d $HOMEVOLUMES/Skype || mkdir $HOMEVOLUMES/Skype
-# test -d $HOMEVOLUMES/google-chrome || mkdir $HOMEVOLUMES/google-chrome
 
 #    -v $HOMEVOLUMES/spotify/config:/home/${DOCKERUSER}/.config/spotify \
 #    -v $HOMEVOLUMES/spotify/cache:/home/${DOCKERUSER}/.cache/spotify \
 #    -v $HOMEVOLUMES/Skype:/home/${DOCKERUSER}/.Skype \
-#    -v $HOMEVOLUMES/google-chrome:/home/${DOCKERUSER}/.config/google-chrome \
 
 docker ps | grep "$IMAGE"
 if [ $? -eq 1 ] || [ $ALWAYSUSERUN -eq 1 ]
